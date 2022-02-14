@@ -15,8 +15,6 @@ const Header: FC = () => {
                 <nav>
                     <ul className={style.content}>
                         <Link className={style.item} to="/">Home</Link>
-                        <Link className={style.item} to="/">Home</Link>
-                        <Link className={style.item} to="/">Home</Link>
                     </ul>
                 </nav>
           </div>
