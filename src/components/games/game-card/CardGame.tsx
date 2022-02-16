@@ -12,7 +12,7 @@ const CardGame: FC<CardGameProps> = ({name, price}) => {
       <div className={style.cardGridSpace}>
           <div className={style.card}>
             <h1>{name}</h1>
-            <p>{price}</p>
+            <p>{price}$</p>
           </div>
       </div>
 

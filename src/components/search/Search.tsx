@@ -1,15 +1,30 @@
-import React, { FC } from 'react'
+import SearchInput from './SearchInput'
+import React, { FC, useState } from 'react'
+import {IArr} from "../../types/Arr"
+import CardGame from "../games/game-card/CardGame"
 
-export interface ISearchProps {
-    value: string;
-    onChangeText: (event: React.ChangeEvent<HTMLInputElement>) => void;
+
+interface SearchProps {
+    games: IArr[],
 }
 
-const Search: FC<ISearchProps> = ({value, onChangeText}) => {
+const Search: FC<SearchProps> = ({games}) => {
+    const [value, setValue] = useState<string>("")
+
+    const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(e.target.value)
+    }
+
+    const filtred = games.filter(game => {
+        return game.name.toLowerCase().includes(value.toLowerCase());
+    })
   return (
-    <div>
-        <input type="text" value={value} onChange={onChangeText} placeholder="Search" />
-    </div>
+      <>
+        <SearchInput value={value} onChangeText={onChangeText}/>
+            {filtred.map((game) => (
+                <CardGame key={game.name} name={game.name} price={game.price}/>
+            ))}
+      </>
   )
 }
 
