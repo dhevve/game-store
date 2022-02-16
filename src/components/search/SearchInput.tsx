@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import style from "./searchInput.module.scss"
 
 export interface ISearchProps {
     value: string;
@@ -8,7 +9,7 @@ export interface ISearchProps {
 const SearchInput: FC<ISearchProps> = ({value, onChangeText}) => {
   return (
     <div>
-        <input type="text" value={value} onChange={onChangeText} placeholder="Search" />
+        <input className={style.input} type="text" value={value} onChange={onChangeText} placeholder="Search" />
     </div>
   )
 }
