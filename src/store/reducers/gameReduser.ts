@@ -11,9 +11,7 @@ interface BasketAction {
 }
 
 const intitalState: IState = {
-    basket: [
-        {id: 123123, name: "the witcher 2", price: 30}
-    ],
+    basket: [],
 }
 
 export const gameReducer = (state = intitalState, action: BasketAction): IState => {

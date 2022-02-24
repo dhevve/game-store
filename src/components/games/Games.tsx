@@ -11,7 +11,7 @@ const Games: FC = () => {
   const dispatch = useDispatch()
 
 
-  const addBasket = (name: any, price: number) => {
+  const addBasket = (name: any, price: number | string) => {
     const newTodo = {
       id: Date.now(),
       name: name,

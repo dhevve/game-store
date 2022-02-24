@@ -4,9 +4,9 @@ import style from "./cardGame.module.scss"
 
 interface CardGameProps {
     name: string,
-    price: number,
+    price: number | string,
     img?: string,
-    addBasket: (name: any, price: number) => void
+    addBasket: (name: any, price: number | string) => void
 }
 
 const CardGame: FC<CardGameProps> = ({name, price, img, addBasket}) => {

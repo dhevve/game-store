@@ -1,6 +1,6 @@
 export interface IArr {
     id: number,
     name: string,
-    price: number,
+    price: number | string,
     img?: string
 }
