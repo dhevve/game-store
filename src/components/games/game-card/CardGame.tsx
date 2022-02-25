@@ -16,9 +16,9 @@ const CardGame: FC<CardGameProps> = ({name, price, img, addBasket}) => {
 
               <div>
                 <h1>{name}</h1>
-                <button onClick={() => addBasket(name, price)}>buy</button>
+                <Button onClick={() => addBasket(name, price)}>buy</Button>
               </div>
-              <p>{price}$</p>
+              {typeof price === "number" ? <p>{price}$</p> : <p>{price}</p>}
 
           </a>
       </div>

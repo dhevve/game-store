@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700");
 
 $color: #424874;
-$transition-time: 0.5s;
+$transition-time: 0.3s;
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -47,6 +47,7 @@ a {
 
 .card:hover {
   transform: rotate(0);
+  transform: scale(1.01);
 }
 
 .card h1 {
