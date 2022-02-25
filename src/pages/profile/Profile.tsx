@@ -12,7 +12,7 @@ function Profile() {
   
     return (
       <>
-        <button onClick={loginout}>login</button>
+        <button onClick={loginout}>logout</button>
       </>
     )
 }

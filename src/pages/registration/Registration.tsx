@@ -13,7 +13,7 @@ const Registration = () => {
   return (
     <>
       <button onClick={login}>login</button>
-      {auth ? <h1>reg</h1> : <h1>no bitches?</h1>}
+      {auth ? <h1>reg</h1> : <img src='https://i.kym-cdn.com/entries/icons/mobile/000/039/393/cover2.jpg'/>}
     </>
   )
 }
