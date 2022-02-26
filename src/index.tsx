@@ -7,6 +7,15 @@ import Approute from './route/Approute';
 import { Provider } from 'react-redux';
 import {store} from "../src/store/store"
 
+import { saveState } from './store/localStorage';
+  
+store.subscribe(() => {
+  saveState({
+    basket: store.getState().basket,
+  });
+});
+  
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

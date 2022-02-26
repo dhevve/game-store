@@ -1,4 +1,7 @@
 import { createStore } from "redux";
 import { rootReducer } from "./reducers";
+import {loadState} from "./localStorage"
 
-export const store = createStore(rootReducer)
+const persistedState = loadState();
+
+export const store = createStore(rootReducer, persistedState)
