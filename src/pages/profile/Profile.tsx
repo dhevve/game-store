@@ -4,16 +4,17 @@ import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 function Profile() {
     const dispatch = useDispatch();
-    const {auth} = useTypedSelector(state => state.auth)
+    const {users} = useTypedSelector(state => state.register)
   
-      const loginout = () => {
+      const logout = () => {
         dispatch({ type: "LOGOUT", payload: false });
       }
   
     return (
-      <>
-        <button onClick={loginout}>logout</button>
-      </>
+      <div className='container'>
+        <h1>{users.map(user => user.name)}</h1>
+        <button onClick={logout}>logout</button>
+      </div>
     )
 }
 
