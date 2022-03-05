@@ -19,13 +19,13 @@ const Games: FC = () => {
   */
 
   const addBasket = (name: any, price: number | string) => {
-    const newTodo = {
+    const newGame = {
       id: Date.now(),
       name: name,
       price: price
     };
     if (auth === true) {
-      dispatch({ type: "ADD_GAME", payload: newTodo });
+      dispatch({ type: "ADD_GAME", payload: newGame });
     } else {
       alert("Register")
     }
