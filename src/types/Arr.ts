@@ -4,3 +4,11 @@ export interface IArr {
     price: number | string,
     img?: string
 }
+
+export interface IUsers {
+    id?: number,
+    name: any,
+    password: any,
+    admin?: boolean
+}
+
