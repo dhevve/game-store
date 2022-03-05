@@ -5,14 +5,18 @@ import SearchInput from '../search/SearchInput'
 import {games} from "../../data/data"
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
+import Button from '../UI/Button'
 
 
 const Games: FC = () => {
   const [value, setValue] = useState<string>("")
-  const [gg, setGG] = useState<boolean>(false)
+  const [sort, setSort] = useState<boolean>()
   const {auth} = useTypedSelector(state => state.auth)
   const dispatch = useDispatch()
 
+  /*
+    взять массив, переделать его под мои нужды, а затем изменить его в стейте
+  */
 
   const addBasket = (name: any, price: number | string) => {
     const newTodo = {
@@ -27,10 +31,6 @@ const Games: FC = () => {
     }
   }
 
-  const changer = () => {
-    setGG(!gg)
-  }
-
   const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
   }
@@ -39,21 +39,34 @@ const Games: FC = () => {
       return game.name.toLowerCase().includes(value.toLowerCase());
   })
 
-  const cost = [...games].sort((a, b) => a.price > b.price ? 1 : -1)
+  const sortCost = () => {
+    setSort(!sort)
+  }
+  
+
+  const cost = [...filtred].sort((a, b) => a.price > b.price ? 1 : -1)
+
+  const costB = [...filtred].sort((a, b) => a.price < b.price ? 1 : -1)
 
   return (
     <>
+    <div className={style.inputGrid}>
       <SearchInput value={value} onChangeText={onChangeText}/>
-      <div className={style.cards}>
-        {gg ? <>{cost.map((game) => (
-          <CardGame addBasket={addBasket} key={game.name} name={game.name} price={game.price} img={game.img}/>
-        ))}</> :
-         <>{filtred.map((game) => (
-                <CardGame addBasket={addBasket} key={game.name} name={game.name} price={game.price} img={game.img}/>
-            ))}</>}
-            
+      <div className={style.buttonWrapper}>
+        <Button onClick={sortCost}>{sort ? "price↑" : "price↓"}</Button>
       </div>
-      <button onClick={changer}>click</button>
+    </div>
+      <div className={style.cards}>
+        { sort ? 
+          <>
+          {cost.map((game) => (
+              <CardGame addBasket={addBasket} key={game.name} name={game.name} price={game.price} img={game.img}/>
+          ))}</> :
+           <>{costB.map((game) => (
+            <CardGame addBasket={addBasket} key={game.name} name={game.name} price={game.price} img={game.img}/>
+          ))}</>
+      }
+      </div>
     </>
   )
 }

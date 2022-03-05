@@ -12,7 +12,7 @@ function Profile() {
   
     return (
       <div className='container'>
-        <h1>{users.map(user => user.name)}</h1>
+        <h1>{users[0].name}</h1>
         <button onClick={logout}>logout</button>
       </div>
     )
