@@ -9,10 +9,12 @@ import Button from '../UI/Button'
 
 
 const Games: FC = () => {
-  const [value, setValue] = useState<string>("")
-  const [sort, setSort] = useState<boolean>()
   const {auth} = useTypedSelector(state => state.auth)
   const dispatch = useDispatch()
+  const [gamesList, setGamesList] = useState([...games])
+  const [value, setValue] = useState<string>("")
+  const [cost, setCost] = useState<boolean>()
+  const [year, setYear] = useState<boolean>()
 
   /*
     взять массив, переделать его под мои нужды, а затем изменить его в стейте
@@ -35,37 +37,42 @@ const Games: FC = () => {
     setValue(e.target.value)
   }
 
-  const filtred = games.filter(game => {
+  const filtred = gamesList.filter(game => {
       return game.name.toLowerCase().includes(value.toLowerCase());
   })
 
   const sortCost = () => {
-    setSort(!sort)
+    if(cost === true) {
+      setGamesList(filtred.sort((a, b) => a.price > b.price ? 1 : -1))
+      setCost(false)
+    } else {
+      setGamesList(filtred.sort((a, b) => a.price < b.price ? 1 : -1))
+      setCost(true)
+    }
   }
-  
-
-  const cost = [...filtred].sort((a, b) => a.price > b.price ? 1 : -1)
-
-  const costB = [...filtred].sort((a, b) => a.price < b.price ? 1 : -1)
+  const sortYear = () => {
+    if(year === true) {
+      setGamesList(filtred.sort((a, b) => a.year > b.year ? 1 : -1))
+      setYear(false)
+    } else {
+      setGamesList(filtred.sort((a, b) => a.year < b.year ? 1 : -1))
+      setYear(true)
+    }
+  }
 
   return (
     <>
     <div className={style.inputGrid}>
       <SearchInput value={value} onChangeText={onChangeText}/>
       <div className={style.buttonWrapper}>
-        <Button onClick={sortCost}>{sort ? "price↑" : "price↓"}</Button>
+        <Button onClick={sortCost}>{cost ? "cost↓" : "cost↑"}</Button>
+        <Button onClick={sortYear}>{year ? "year↓" : "year↑"}</Button>
       </div>
     </div>
       <div className={style.cards}>
-        { sort ? 
-          <>
-          {cost.map((game) => (
+         {filtred.map((game) => (
               <CardGame addBasket={addBasket} key={game.name} name={game.name} price={game.price} img={game.img}/>
-          ))}</> :
-           <>{costB.map((game) => (
-            <CardGame addBasket={addBasket} key={game.name} name={game.name} price={game.price} img={game.img}/>
-          ))}</>
-      }
+          ))}
       </div>
     </>
   )

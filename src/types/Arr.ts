@@ -1,8 +1,9 @@
 export interface IArr {
     id: number,
     name: string,
-    price: number | string,
+    price: number,
     img?: string
+    year: number
 }
 
 export interface IUsers {
