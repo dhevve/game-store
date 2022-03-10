@@ -6,19 +6,19 @@ import {games} from "../../data/data"
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import Button from '../UI/Button'
+import Popup from './Popup'
+import { IArr } from '../../types/Arr'
+import Sort from './Sort'
 
 
 const Games: FC = () => {
-  const {auth} = useTypedSelector(state => state.auth)
   const dispatch = useDispatch()
-  const [gamesList, setGamesList] = useState([...games])
+  const [gamesList, setGamesList] = useState<IArr[]>([...games])
+  const {auth} = useTypedSelector(state => state.auth)
   const [value, setValue] = useState<string>("")
   const [cost, setCost] = useState<boolean>()
   const [year, setYear] = useState<boolean>()
-
-  /*
-    взять массив, переделать его под мои нужды, а затем изменить его в стейте
-  */
+  const [popup, setPopup] = useState<boolean>(false)
 
   const addBasket = (name: any, price: number | string) => {
     const newGame = {
@@ -41,23 +41,8 @@ const Games: FC = () => {
       return game.name.toLowerCase().includes(value.toLowerCase());
   })
 
-  const sortCost = () => {
-    if(cost === true) {
-      setGamesList(filtred.sort((a, b) => a.price > b.price ? 1 : -1))
-      setCost(false)
-    } else {
-      setGamesList(filtred.sort((a, b) => a.price < b.price ? 1 : -1))
-      setCost(true)
-    }
-  }
-  const sortYear = () => {
-    if(year === true) {
-      setGamesList(filtred.sort((a, b) => a.year > b.year ? 1 : -1))
-      setYear(false)
-    } else {
-      setGamesList(filtred.sort((a, b) => a.year < b.year ? 1 : -1))
-      setYear(true)
-    }
+  const showPopup = () => {
+    setPopup(!popup)
   }
 
   return (
@@ -65,8 +50,11 @@ const Games: FC = () => {
     <div className={style.inputGrid}>
       <SearchInput value={value} onChangeText={onChangeText}/>
       <div className={style.buttonWrapper}>
-        <Button onClick={sortCost}>{cost ? "cost↓" : "cost↑"}</Button>
-        <Button onClick={sortYear}>{year ? "year↓" : "year↑"}</Button>
+        <Sort cost={cost} year={year} filtred={filtred} setGamesList={setGamesList} setCost={setCost} setYear={setYear}/>
+        <Button onClick={showPopup}>genre</Button>
+        {popup && 
+          <Popup setGamesList={setGamesList} setPopup={setPopup}/>
+        }
       </div>
     </div>
       <div className={style.cards}>

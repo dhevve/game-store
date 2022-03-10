@@ -171,3 +171,16 @@ a {
     margin: 0;
   }
 }
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #fff;
+  border: 5px solid #ccc;
+  border-radius: 20px;
+  padding: 20px;
+  top: 20%;
+  right: 5%;
+  z-index: 10000;
+}
