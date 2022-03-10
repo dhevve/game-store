@@ -23,6 +23,16 @@ const Popup: FC<PopupProps> = ({setGamesList, setPopup}) => {
         setGamesList(games.filter((t) => t.genre === "BR"))
         setPopup(false)
     }
+
+    const rp = () => {
+      setGamesList(games.filter((t) => t.genre === "RP"))
+      setPopup(false)
+    }
+
+    const sandbox = () => {
+      setGamesList(games.filter((t) => t.genre === "sandbox"))
+      setPopup(false)
+    }
   
     const all = () => {
       setGamesList(games)
@@ -34,7 +44,9 @@ const Popup: FC<PopupProps> = ({setGamesList, setPopup}) => {
           <Button onClick={all}>all</Button>
           <Button onClick={rpg}>rpg</Button>
           <Button onClick={shooter}>shooter</Button>
-          <Button onClick={br}>BR</Button>
+          <Button onClick={br}>battle-royale</Button>
+          <Button onClick={rp}>role-play</Button>
+          <Button onClick={sandbox}>sandbox</Button>
     </div>
   )
 }

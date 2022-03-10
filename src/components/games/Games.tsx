@@ -13,7 +13,7 @@ import Sort from './Sort'
 
 const Games: FC = () => {
   const dispatch = useDispatch()
-  const [gamesList, setGamesList] = useState<IArr[]>([...games])
+  const [gamesList, setGamesList] = useState([...games])
   const {auth} = useTypedSelector(state => state.auth)
   const [value, setValue] = useState<string>("")
   const [cost, setCost] = useState<boolean>()
