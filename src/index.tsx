@@ -12,6 +12,7 @@ import { saveState } from './store/localStorage';
 store.subscribe(() => {
   saveState({
     basket: store.getState().basket,
+    auth: store.getState().auth,
   });
 });
   

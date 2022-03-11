@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import Button from '../UI/Button'
 import Popup from './Popup'
-import { IArr } from '../../types/Arr'
 import Sort from './Sort'
 
 
@@ -32,6 +31,7 @@ const Games: FC = () => {
       alert("Register")
     }
   }
+
 
   const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)

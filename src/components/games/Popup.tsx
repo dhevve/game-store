@@ -41,12 +41,24 @@ const Popup: FC<PopupProps> = ({setGamesList, setPopup}) => {
 
   return (
     <div className={style.popup}>
+      <div className={style.popBtn}>
           <Button onClick={all}>all</Button>
+      </div>
+      <div className={style.popBtn}>
           <Button onClick={rpg}>rpg</Button>
+      </div>
+      <div className={style.popBtn}>
           <Button onClick={shooter}>shooter</Button>
+      </div>
+      <div className={style.popBtn}>
           <Button onClick={br}>battle-royale</Button>
+      </div>
+      <div className={style.popBtn}>
           <Button onClick={rp}>role-play</Button>
+      </div>
+      <div className={style.popBtn}>
           <Button onClick={sandbox}>sandbox</Button>
+      </div>
     </div>
   )
 }

@@ -5,10 +5,6 @@ import Button from '../../components/UI/Button'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { IUsers } from '../../types/Arr'
 import style from "./registration.module.scss"
-/* import { users } from '../../data/users'
-import { IUsers } from '../../types/Arr' */
-
-const user = {id: 1, name: "admin", password: "admin"}
 
 const Registration = () => {
   const dispatch = useDispatch();
