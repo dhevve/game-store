@@ -34,7 +34,7 @@ const Sort: FC<SortProps> = ({year, cost, filtred, setCost, setGamesList, setYea
   return (
       <>
         <Button onClick={sortYear}>{year ? "year↓" : "year↑"}</Button>
-        <Button onClick={sortCost}>{cost ? "cost↓" : "cost↑"}</Button>
+        <Button onClick={sortCost}>{cost ? "price↓" : "price↑"}</Button>
       </>
   )
 }

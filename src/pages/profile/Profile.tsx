@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import Button from '../../components/UI/Button';
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 function Profile() {
@@ -13,7 +14,7 @@ function Profile() {
     return (
       <div className='container'>
         <h1>{users[0].name}</h1>
-        <button onClick={logout}>logout</button>
+        <Button onClick={logout}>logout</Button>
       </div>
     )
 }
